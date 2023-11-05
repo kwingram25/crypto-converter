@@ -148,7 +148,7 @@ export function Converter({
   };
 
   useEffect(() => {
-    if (isMounted.current) {
+    if (isMounted.current || process.env.NODE_ENV === "production") {
       setIsTotalLoading(true);
       interval.current && update(currency);
 
