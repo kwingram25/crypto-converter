@@ -24,6 +24,8 @@ export default async function Home() {
 
   const wucValue = await getLatestPrice(currency);
 
+  cookies().set("currency", currency);
+
   return (
     <Suspense fallback={<Loading />}>
       <Converter fiatAmount={fiatAmount} wucValue={wucValue} />
