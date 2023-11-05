@@ -33,7 +33,6 @@ export async function GET(request: Request) {
       { data },
       {
         status: 200,
-        headers: { "Set-Cookie": `currency=${data.currency}` },
       }
     );
   } catch (e) {

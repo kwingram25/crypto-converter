@@ -46,9 +46,10 @@ export function Converter({
   fiatAmount?: number;
   wucValue?: WucValue;
 }) {
-  const [, setCookie] = useCookies<"fiatAmount", { fiatAmount?: number }>([
-    "fiatAmount",
-  ]);
+  const [, setCookie] = useCookies<
+    "fiatAmount" | "currency",
+    { fiatAmount?: number }
+  >(["fiatAmount", "currency"]);
   const isMounted = useRef(false);
   const interval = useRef<NodeJS.Timeout>();
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -182,6 +183,10 @@ export function Converter({
       fiatAmount.length === 0 ? "0" : fiatAmount.toString()
     );
   }, [fiatAmount, setCookie]);
+
+  useEffect(() => {
+    setCookie("currency", currency || "USD");
+  }, [currency, setCookie]);
 
   return (
     <div className="container px-6 flex items-start justify-center md:px-0">
