@@ -141,6 +141,7 @@ export function Converter({
           return res.data || prev;
         });
     } catch (e) {
+      console.error(e);
     } finally {
       setIsTotalLoading(false);
     }
