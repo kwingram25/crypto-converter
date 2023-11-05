@@ -25,16 +25,8 @@ export default async function Home() {
   const wucValue = await getLatestPrice(currency);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between mt-24">
-      <SkeletonTheme
-        baseColor="#363636"
-        highlightColor="#404040"
-        borderRadius={0}
-      >
-        <Suspense fallback={<Loading />}>
-          <Converter fiatAmount={fiatAmount} wucValue={wucValue} />
-        </Suspense>
-      </SkeletonTheme>
-    </main>
+    <Suspense fallback={<Loading />}>
+      <Converter fiatAmount={fiatAmount} wucValue={wucValue} />
+    </Suspense>
   );
 }
